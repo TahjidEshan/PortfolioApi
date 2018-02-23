@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioApi", "PortfolioApi\PortfolioApi.csproj", "{DDE63B10-5D92-4BAB-8BCC-188701AA5F26}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6067306C-1030-4E89-B27D-A8F40393990C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{659B280E-D643-4383-BB1B-02B91F07B4E0}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PortfolioApi", "src\PortfolioApi\PortfolioApi.xproj", "{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +18,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DDE63B10-5D92-4BAB-8BCC-188701AA5F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDE63B10-5D92-4BAB-8BCC-188701AA5F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDE63B10-5D92-4BAB-8BCC-188701AA5F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDE63B10-5D92-4BAB-8BCC-188701AA5F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {91FAA63F-158C-4430-9B7C-B45AA3F357B5}
+	GlobalSection(NestedProjects) = preSolution
+		{6A664DE6-2EC7-4F5E-8C09-DF326ECD5128} = {6067306C-1030-4E89-B27D-A8F40393990C}
 	EndGlobalSection
 EndGlobal
