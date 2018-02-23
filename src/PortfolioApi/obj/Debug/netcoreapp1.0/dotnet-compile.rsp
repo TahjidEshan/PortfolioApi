@@ -180,6 +180,9 @@ D:\Projects\PortfolioApi\src\PortfolioApi\Program.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Startup.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Controllers\PortFolioController.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Controllers\ValuesController.cs
+D:\Projects\PortfolioApi\src\PortfolioApi\DAL\BaseRepository.cs
+D:\Projects\PortfolioApi\src\PortfolioApi\DAL\IGenericRepository.cs
+D:\Projects\PortfolioApi\src\PortfolioApi\DAL\PortfolioContext.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Enums\Enums.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Models\Address.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Models\BaseClass.cs
@@ -194,6 +197,3 @@ D:\Projects\PortfolioApi\src\PortfolioApi\Models\SentMail.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Models\SocialService.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Models\SpecialSkills.cs
 D:\Projects\PortfolioApi\src\PortfolioApi\Models\WorkDetails.cs
-D:\Projects\PortfolioApi\src\PortfolioApi\Repository\BaseRepository.cs
-D:\Projects\PortfolioApi\src\PortfolioApi\Repository\IGenericRepository.cs
-D:\Projects\PortfolioApi\src\PortfolioApi\Repository\PortfolioDBContext.cs
