@@ -1,0 +1,11 @@
+F:\Projects\PortFolio2017\PortFolio2017\bin\Debug\netcoreapp2.0\PortFolio2017.deps.json
+F:\Projects\PortFolio2017\PortFolio2017\bin\Debug\netcoreapp2.0\PortFolio2017.runtimeconfig.json
+F:\Projects\PortFolio2017\PortFolio2017\bin\Debug\netcoreapp2.0\PortFolio2017.runtimeconfig.dev.json
+F:\Projects\PortFolio2017\PortFolio2017\bin\Debug\netcoreapp2.0\PortFolio2017.dll
+F:\Projects\PortFolio2017\PortFolio2017\bin\Debug\netcoreapp2.0\PortFolio2017.pdb
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.csprojResolveAssemblyReference.cache
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.csproj.CoreCompileInputs.cache
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.AssemblyInfoInputs.cache
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.AssemblyInfo.cs
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.dll
+F:\Projects\PortFolio2017\PortFolio2017\obj\Debug\netcoreapp2.0\PortFolio2017.pdb
