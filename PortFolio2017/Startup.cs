@@ -22,7 +22,7 @@ namespace PortFolio2017
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<IGenericRepository<BaseClass>, BaseRepository<BaseClass>>();
+            services.AddScoped<IGenericRepository, BaseRepository>();
             services.AddDbContext<PortfolioContext>(opts =>
                 opts.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
             services.AddTransient<IBaseService, BaseService>();

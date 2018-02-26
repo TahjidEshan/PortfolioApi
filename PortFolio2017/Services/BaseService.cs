@@ -9,415 +9,378 @@ namespace PortFolio2017.Services
 {
     public class BaseService : IBaseService
     {
-        protected IGenericRepository<Address> AddressRepository { get; set; }
-        protected IGenericRepository<Author> AuthorRepository { get; set; }
-        protected IGenericRepository<Education> EducationRepository { get; set; }
-        protected IGenericRepository<Email> EmailRepository { get; set; }
-        protected IGenericRepository<Event> EventRepository { get; set; }
-        protected IGenericRepository<GeneralSkill> GeneralSkillRepository { get; set; }
-        protected IGenericRepository<Header> HeaderRepository { get; set; }
-        protected IGenericRepository<Image> ImageRepository { get; set; }
-        protected IGenericRepository<Motto> MottoRepository { get; set; }
-        protected IGenericRepository<Phone> PhoneRepository { get; set; }
-        protected IGenericRepository<Publication> PublicationRepository { get; set; }
-        protected IGenericRepository<PublicationAuthors> PublicationAuthorsRepository { get; set; }
-        protected IGenericRepository<SentMail> SentMailRepository { get; set; }
-        protected IGenericRepository<SocialService> SocialServiceRepository { get; set; }
-        protected IGenericRepository<SpecialSkills> SpecialSkillsRepository { get; set; }
-        protected IGenericRepository<Work> WorkRepository { get; set; }
+        protected IGenericRepository BaseRepository { get; set; }
 
-        public BaseService(IGenericRepository<Address> AddressRepository, IGenericRepository<Author> AuthorRepository,
-            IGenericRepository<Education> EducationRepository, IGenericRepository<Email> EmailRepository,
-            IGenericRepository<Event> EventRepository, IGenericRepository<GeneralSkill> GeneralSkillRepository,
-            IGenericRepository<Header> HeaderRepository, IGenericRepository<Image> ImageRepository,
-            IGenericRepository<Motto> MottoRepository, IGenericRepository<Phone> PhoneRepository,
-            IGenericRepository<Publication> PublicationRepository, IGenericRepository<PublicationAuthors> PublicationAuthorsRepository,
-            IGenericRepository<SentMail> SentMailRepository, IGenericRepository<SocialService> SocialServiceRepository,
-            IGenericRepository<SpecialSkills> SpecialSkillsRepository, IGenericRepository<Work> WorkRepository
-            )
+        public BaseService(IGenericRepository BaseRepository)
         {
-            this.AddressRepository = AddressRepository;
-            this.AuthorRepository = AuthorRepository;
-            this.EducationRepository = EducationRepository;
-            this.EmailRepository = EmailRepository;
-            this.EventRepository = EventRepository;
-            this.GeneralSkillRepository = GeneralSkillRepository;
-            this.HeaderRepository = HeaderRepository;
-            this.ImageRepository = ImageRepository;
-            this.MottoRepository = MottoRepository;
-            this.PhoneRepository = PhoneRepository;
-            this.PublicationRepository = PublicationRepository;
-            this.PublicationAuthorsRepository = PublicationAuthorsRepository;
-            this.SentMailRepository = SentMailRepository;
-            this.SocialServiceRepository = SocialServiceRepository;
-            this.SpecialSkillsRepository = SpecialSkillsRepository;
-            this.WorkRepository = WorkRepository;
+            this.BaseRepository = BaseRepository;
         }
 
 
         //Address
         public void Save(Address Address)
         {
-            AddressRepository.Insert(Address);
+            BaseRepository.Insert<Address>(Address);
         }
         public void Delete(Address Address)
         {
-            AddressRepository.Delete(Address);
+            BaseRepository.Delete<Address>(Address);
         }
         public void Update(Address Address)
         {
-            AddressRepository.Update(Address);
+            BaseRepository.Update<Address>(Address);
         }
         public Address GetAddressById(long Id)
         {
-            return AddressRepository.GetByID(Id);
+            return BaseRepository.GetByID<Address>(Id);
         }
         public IQueryable<Address> GetAddresses()
         {
-            return AddressRepository.GetQuery();
+            return BaseRepository.GetQuery<Address>();
         }
 
         //Author
         public void Save(Author Author)
         {
-            AuthorRepository.Insert(Author);
+            BaseRepository.Insert<Author>(Author);
         }
         public void Delete(Author Author)
         {
-            AuthorRepository.Delete(Author);
+            BaseRepository.Delete<Author>(Author);
         }
         public void Update(Author Author)
         {
-            AuthorRepository.Update(Author);
+            BaseRepository.Update<Author>(Author);
         }
         public Author GetAuthorById(long Id)
         {
-            return AuthorRepository.GetByID(Id);
+            return BaseRepository.GetByID<Author>(Id);
         }
         public IQueryable<Author> GetAuthors()
         {
-            return AuthorRepository.GetQuery();
+            return BaseRepository.GetQuery<Author>();
         }
         public IQueryable<Author> GetAuthorsOfAPublication(long PublicationId)
         {
-            IQueryable<long> Authors = PublicationAuthorsRepository.
-                GetQuery().Where(x => x.PublicationId == PublicationId).Select(x => x.AuthorId);
-            return AuthorRepository.GetQuery().Where(x => Authors.Contains(x.Id));
+            IQueryable<long> Authors = BaseRepository.
+                GetQuery<PublicationAuthors>().Where(x => x.PublicationId == PublicationId).Select(x => x.AuthorId);
+            return BaseRepository.GetQuery<Author>().Where(x => Authors.Contains(x.Id));
         }
 
         //Education
         public void Save(Education Education)
         {
-            EducationRepository.Insert(Education);
+            BaseRepository.Insert<Education>(Education);
         }
         public void Delete(Education Education)
         {
-            EducationRepository.Delete(Education);
+            BaseRepository.Delete<Education>(Education);
         }
         public void Update(Education Education)
         {
-            EducationRepository.Update(Education);
+            BaseRepository.Update<Education>(Education);
         }
         public Education GetEducationDetailsById(long Id)
         {
-            return EducationRepository.GetByID(Id);
+            return BaseRepository.GetByID<Education>(Id);
         }
         public IQueryable<Education> GetAllEducationDetails()
         {
-            return EducationRepository.GetQuery();
+            return BaseRepository.GetQuery<Education>();
         }
 
         //Email
         public void Save(Email Email)
         {
-            EmailRepository.Insert(Email);
+            BaseRepository.Insert<Email>(Email);
         }
         public void Delete(Email Email)
         {
-            EmailRepository.Delete(Email);
+            BaseRepository.Delete<Email>(Email);
         }
         public void Update(Email Email)
         {
-            EmailRepository.Update(Email);
+            BaseRepository.Update<Email>(Email);
         }
         public Email GetEmailById(long Id)
         {
-            return EmailRepository.GetByID(Id);
+            return BaseRepository.GetByID<Email>(Id);
         }
         public IQueryable<Email> GetAllEmails()
         {
-            return EmailRepository.GetQuery();
+            return BaseRepository.GetQuery<Email>();
         }
 
         //Event
         public void Save(Event Event)
         {
-            EventRepository.Insert(Event);
+            BaseRepository.Insert<Event>(Event);
         }
         public void Delete(Event Event)
         {
-            EventRepository.Delete(Event);
+            BaseRepository.Delete<Event>(Event);
         }
         public void Update(Event Event)
         {
-            EventRepository.Update(Event);
+            BaseRepository.Update<Event>(Event);
         }
         public Event GetEventById(long Id)
         {
-            return EventRepository.GetByID(Id);
+            return BaseRepository.GetByID<Event>(Id);
         }
         public IQueryable<Event> GetAllEvents()
         {
-            return EventRepository.GetQuery();
+            return BaseRepository.GetQuery<Event>();
         }
 
         //GeneralSkill
         public void Save(GeneralSkill GeneralSkill)
         {
-            GeneralSkillRepository.Insert(GeneralSkill);
+            BaseRepository.Insert<GeneralSkill>(GeneralSkill);
         }
         public void Delete(GeneralSkill GeneralSkill)
         {
-            GeneralSkillRepository.Delete(GeneralSkill);
+            BaseRepository.Delete<GeneralSkill>(GeneralSkill);
         }
         public void Update(GeneralSkill GeneralSkill)
         {
-            GeneralSkillRepository.Update(GeneralSkill);
+            BaseRepository.Update<GeneralSkill>(GeneralSkill);
         }
         public GeneralSkill GetGeneralSkillById(long Id)
         {
-            return GeneralSkillRepository.GetByID(Id);
+            return BaseRepository.GetByID<GeneralSkill>(Id);
         }
         public IQueryable<GeneralSkill> GetAllGeneralSkills()
         {
-            return GeneralSkillRepository.GetQuery();
+            return BaseRepository.GetQuery<GeneralSkill>();
         }
 
         //Header
         public void Save(Header Header)
         {
-            HeaderRepository.Insert(Header);
+            BaseRepository.Insert<Header>(Header);
         } 
 
         public void Delete(Header Header)
         {
-            HeaderRepository.Delete(Header);
+            BaseRepository.Delete<Header>(Header);
         }
         public void Update(Header Header)
         {
-            HeaderRepository.Update(Header);
+            BaseRepository.Update<Header>(Header);
         }
         public Header GetHeaderById(long Id)
         {
-            return HeaderRepository.GetByID(Id);
+            return BaseRepository.GetByID<Header>(Id);
         }
         public IQueryable<Header> GetAllHeaders()
         {
-            return HeaderRepository.GetQuery();
+            return BaseRepository.GetQuery<Header>();
         }
 
         //Image
         public void Save(Image Image)
         {
-            ImageRepository.Insert(Image);
+           BaseRepository.Insert<Image>(Image);
         }
         public void Delete(Image Image)
         {
-            ImageRepository.Delete(Image);
+            BaseRepository.Delete<Image>(Image);
         }
         public void Update(Image Image)
         {
-            ImageRepository.Update(Image);
+            BaseRepository.Update<Image>(Image);
         }
         public Image GetImageById(long Id)
         {
-            return ImageRepository.GetByID(Id);
+            return BaseRepository.GetByID<Image>(Id);
         }
         public IQueryable<Image> GetAllImages()
         {
-            return ImageRepository.GetQuery();
+            return BaseRepository.GetQuery<Image>();
         }
 
         //Motto
         public void Save(Motto Motto)
         {
-            MottoRepository.Insert(Motto);
+
+            BaseRepository.Insert<Motto>(Motto);
         }
         public void Delete(Motto Motto)
         {
-            MottoRepository.Delete(Motto);
+            BaseRepository.Delete<Motto>(Motto);
         }
         public void Update(Motto Motto)
         {
-            MottoRepository.Update(Motto);
+            BaseRepository.Update<Motto>(Motto);
         }
         public Motto GetMottoById(long Id)
         {
-            return MottoRepository.GetByID(Id);
+            return BaseRepository.GetByID<Motto>(Id);
         }
         public IQueryable<Motto> GetAllMottos()
         {
-            return MottoRepository.GetQuery();
+            return BaseRepository.GetQuery<Motto>();
         }
 
         //Phone
         public void Save(Phone Phone)
         {
-            PhoneRepository.Insert(Phone);
+            BaseRepository.Insert<Phone>(Phone);
         }
         public void Delete(Phone Phone)
         {
-            PhoneRepository.Delete(Phone);
+            BaseRepository.Delete<Phone>(Phone);
         }
         public void Update(Phone Phone)
         {
-            PhoneRepository.Update(Phone);
+            BaseRepository.Update<Phone>(Phone);
         }
         public Phone GetPhoneById(long Id)
         {
-            return PhoneRepository.GetByID(Id);
+            return BaseRepository.GetByID<Phone>(Id);
         }
         public IQueryable<Phone> GetAllPhones()
         {
-            return PhoneRepository.GetQuery();
+            return BaseRepository.GetQuery<Phone>();
         }
 
         //Publication
         public void Save(Publication Publication)
         {
-            PublicationRepository.Insert(Publication);
+            BaseRepository.Insert<Publication>(Publication);
         }
         public void Delete(Publication Publication)
         {
-            PublicationRepository.Delete(Publication);
+            BaseRepository.Delete<Publication>(Publication);
         }
         public void Update(Publication Publication)
         {
-            PublicationRepository.Update(Publication);
+            BaseRepository.Update<Publication>(Publication);
         }
         public Publication GetPublicationById(long Id)
         {
-            return PublicationRepository.GetByID(Id);
+            return BaseRepository.GetByID<Publication>(Id);
         }
         public IQueryable<Publication> GetAllPublications()
         {
-            return PublicationRepository.GetQuery();
+            return BaseRepository.GetQuery<Publication>();
         }
         public IQueryable<Publication> GetAllPublicationsOfAnAuthor(long AuthorId)
         {
-            IQueryable<long> PublicationIds = PublicationAuthorsRepository.GetQuery().Where(x => x.AuthorId == AuthorId).
+            IQueryable<long> PublicationIds = BaseRepository.GetQuery<PublicationAuthors>().Where(x => x.AuthorId == AuthorId).
                 Select(x => x.PublicationId);
-            return PublicationRepository.GetQuery().Where(x => PublicationIds.Contains(x.Id));
+            return BaseRepository.GetQuery<Publication>().Where(x => PublicationIds.Contains(x.Id));
         }
 
         //PublicationAuthors
         public void Save(PublicationAuthors PublicationAuthors)
         {
-            PublicationAuthorsRepository.Insert(PublicationAuthors);
+            BaseRepository.Insert<PublicationAuthors>(PublicationAuthors);
         }
         public void Delete(PublicationAuthors PublicationAuthors)
         {
-            PublicationAuthorsRepository.Delete(PublicationAuthors);
+            BaseRepository.Delete<PublicationAuthors>(PublicationAuthors);
         }
         public void Update(PublicationAuthors PublicationAuthors)
         {
-            PublicationAuthorsRepository.Update(PublicationAuthors);
+            BaseRepository.Update<PublicationAuthors>(PublicationAuthors);
         }
         public PublicationAuthors GetPublicationAuthorsById(long Id)
         {
-            return PublicationAuthorsRepository.GetByID(Id);
+            return BaseRepository.GetByID<PublicationAuthors>(Id);
         }
         public IQueryable<PublicationAuthors> GetAllPublicationAuthors()
         {
-            return PublicationAuthorsRepository.GetQuery();
+            return BaseRepository.GetQuery<PublicationAuthors>();
         }
 
         //SentMail
         public void Save(SentMail SentMail)
         {
-            SentMailRepository.Insert(SentMail);
+            BaseRepository.Insert<SentMail>(SentMail);
         }
         public void Delete(SentMail SentMail)
         {
-            SentMailRepository.Delete(SentMail);
+            BaseRepository.Delete<SentMail>(SentMail);
         }
         public void Update(SentMail SentMail)
         {
-            SentMailRepository.Update(SentMail);
+            BaseRepository.Update<SentMail>(SentMail);
         }
         public SentMail GetSentMailById(long Id)
         {
-            return SentMailRepository.GetByID(Id);
+            return BaseRepository.GetByID<SentMail>(Id);
         }
         public IQueryable<SentMail> GetAllSentMails()
         {
-            return SentMailRepository.GetQuery();
+            return BaseRepository.GetQuery<SentMail>();
         }
 
         //SocialService
         public void Save(SocialService SocialService)
         {
-            SocialServiceRepository.Insert(SocialService);
+            BaseRepository.Insert<SocialService>(SocialService);
         }
         public void Delete(SocialService SocialService)
         {
-            SocialServiceRepository.Delete(SocialService);
+            BaseRepository.Delete<SocialService>(SocialService);
         }
         public void Update(SocialService SocialService)
         {
-            SocialServiceRepository.Update(SocialService);
+            BaseRepository.Update<SocialService>(SocialService);
         }
         public SocialService GetSocialServiceById(long Id)
         {
-            return SocialServiceRepository.GetByID(Id);
+            return BaseRepository.GetByID<SocialService>(Id);
         }
         public IQueryable<SocialService> GetAllSocialServices()
         {
-            return SocialServiceRepository.GetQuery();
+            return BaseRepository.GetQuery<SocialService>();
         }
 
         //SpecialSkills
         public void Save(SpecialSkills SpecialSkills)
         {
-            SpecialSkillsRepository.Insert(SpecialSkills);
+            BaseRepository.Insert<SpecialSkills>(SpecialSkills);
         }
         public void Delete(SpecialSkills SpecialSkills)
         {
-            SpecialSkillsRepository.Delete(SpecialSkills);
+            BaseRepository.Delete<SpecialSkills>(SpecialSkills);
         }
         public void Update(SpecialSkills SpecialSkills)
         {
-            SpecialSkillsRepository.Update(SpecialSkills);
+            BaseRepository.Update<SpecialSkills>(SpecialSkills);
         }
         public SpecialSkills GetSpecialSkillsById(long Id)
         {
-            return SpecialSkillsRepository.GetByID(Id);
+            return BaseRepository.GetByID<SpecialSkills>(Id);
         }
         public IQueryable<SpecialSkills> GetAllSpecialSkills()
         {
-            return SpecialSkillsRepository.GetQuery();
+            return BaseRepository.GetQuery<SpecialSkills>();
         }
 
         //Work
         public void Save(Work Work)
         {
-            WorkRepository.Insert(Work);
+            BaseRepository.Insert<Work>(Work);
         }
         public void Delete(Work Work)
         {
-            WorkRepository.Delete(Work);
+            BaseRepository.Delete<Work>(Work);
         }
         public void Update(Work Work)
         {
-            WorkRepository.Update(Work);
+            BaseRepository.Update<Work>(Work);
         }
         public Work GetWorkById(long Id)
         {
-            return WorkRepository.GetByID(Id);
+            return BaseRepository.GetByID<Work>(Id);
         }
         public IQueryable<Work> GetAllWorks()
         {
-            return WorkRepository.GetQuery();
+            return BaseRepository.GetQuery<Work>();
         }
     }
 }

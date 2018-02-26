@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PortFolio2017.DAL;
+using PortFolio2017.Models;
+using PortFolio2017.Services;
 
 namespace PortFolio2017.Controllers
 {
     [Route("api/[controller]")]
     public class PortfolioController : Controller
     {
-        // GET api/values
+        protected IBaseService BaseService { get; set; }
+
+        public PortfolioController(IBaseService BaseService)
+        {
+            this.BaseService = BaseService;
+        }
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return BaseService.GetAllEmails().Select(x=>x.EmailAddress);
         }
 
         // GET api/values/5
