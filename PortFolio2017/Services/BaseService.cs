@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortFolio2017.Services
 {
-    public class Service : IBaseService
+    public class BaseService : IBaseService
     {
         protected IGenericRepository<Address> AddressRepository { get; set; }
         protected IGenericRepository<Author> AuthorRepository { get; set; }
@@ -26,7 +26,7 @@ namespace PortFolio2017.Services
         protected IGenericRepository<SpecialSkills> SpecialSkillsRepository { get; set; }
         protected IGenericRepository<Work> WorkRepository { get; set; }
 
-        public Service(IGenericRepository<Address> AddressRepository, IGenericRepository<Author> AuthorRepository,
+        public BaseService(IGenericRepository<Address> AddressRepository, IGenericRepository<Author> AuthorRepository,
             IGenericRepository<Education> EducationRepository, IGenericRepository<Email> EmailRepository,
             IGenericRepository<Event> EventRepository, IGenericRepository<GeneralSkill> GeneralSkillRepository,
             IGenericRepository<Header> HeaderRepository, IGenericRepository<Image> ImageRepository,
