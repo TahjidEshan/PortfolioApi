@@ -12,8 +12,8 @@ using System;
 namespace PortFolio2017.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20180225172744_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20180226153547_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -430,15 +430,18 @@ namespace PortFolio2017.Migrations
                 {
                     b.HasOne("PortFolio2017.Models.Education", "Education")
                         .WithMany()
-                        .HasForeignKey("EducationId");
+                        .HasForeignKey("EducationId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PortFolio2017.Models.Publication", "Publication")
                         .WithMany()
-                        .HasForeignKey("PublicationId");
+                        .HasForeignKey("PublicationId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PortFolio2017.Models.Work", "Work")
                         .WithMany()
-                        .HasForeignKey("WorkId");
+                        .HasForeignKey("WorkId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.PublicationAuthors", b =>
@@ -446,12 +449,12 @@ namespace PortFolio2017.Migrations
                     b.HasOne("PortFolio2017.Models.Author", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PortFolio2017.Models.Author", "Publication")
                         .WithMany()
                         .HasForeignKey("PublicationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.SentMail", b =>
@@ -459,17 +462,17 @@ namespace PortFolio2017.Migrations
                     b.HasOne("PortFolio2017.Models.Email", "EmailAddress")
                         .WithMany()
                         .HasForeignKey("EmailAddressId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PortFolio2017.Models.Phone", "Phone")
                         .WithMany()
                         .HasForeignKey("PhoneId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PortFolio2017.Models.Email", "ToEmailAddress")
                         .WithMany()
                         .HasForeignKey("ToEmailAddressId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

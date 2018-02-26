@@ -14,6 +14,16 @@ namespace PortFolio2017.DAL
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            foreach (var relationship in modelbuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            base.OnModelCreating(modelbuilder);
+        }
+
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -29,5 +39,6 @@ namespace PortFolio2017.DAL
         public DbSet<PublicationAuthors> PublicationAuthors { get; set; }
         public DbSet<Work> WorkHistory { get; set; }
         public DbSet<Education> EducationHistory { get; set; }
-    }
+
+   }
 }
