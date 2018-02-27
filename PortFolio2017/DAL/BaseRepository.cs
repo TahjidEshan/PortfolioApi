@@ -43,5 +43,37 @@ namespace PortFolio2017.DAL
             _dbContext.Set<TEntity>().Update(entity);
             _dbContext.SaveChanges();
         }
+
+        //User
+
+
+        public virtual void DeleteUser<TEntity>(TEntity entity) where TEntity : User
+        {
+            _dbContext.Set<TEntity>().Remove(entity);
+            _dbContext.SaveChanges();
+        }
+
+        public virtual TEntity GetUserByID<TEntity>(object id) where TEntity : User
+        {
+            return _dbContext.Set<TEntity>().FirstOrDefault(t => t.UserId == (long)id);
+        }
+
+        public virtual IQueryable<TEntity> GetAllUsers<TEntity>() where TEntity : User
+        {
+            DbSet<TEntity> tempSet = _dbContext.Set<TEntity>();
+            return tempSet.AsQueryable<TEntity>();
+        }
+
+        public virtual void InsertUser<TEntity>(TEntity entity) where TEntity : User
+        {
+            _dbContext.Set<TEntity>().Add(entity);
+            _dbContext.SaveChanges();
+        }
+
+        public virtual void UpdateUser<TEntity>(TEntity entity) where TEntity : User
+        {
+            _dbContext.Set<TEntity>().Update(entity);
+            _dbContext.SaveChanges();
+        }
     }
 }

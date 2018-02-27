@@ -382,5 +382,34 @@ namespace PortFolio2017.Services
         {
             return BaseRepository.GetQuery<Work>();
         }
+
+        //User
+        public void Save(User User)
+        {
+            BaseRepository.InsertUser<User>(User);
+        }
+        public void Delete(User User)
+        {
+            BaseRepository.DeleteUser<User>(User);
+        }
+        public void Update(User User)
+        {
+            BaseRepository.UpdateUser<User>(User);
+        }
+        public User GetUserById(long Id)
+        {
+            return BaseRepository.GetUserByID<User>(Id);
+        }
+        public IQueryable<User> GetAllUsers()
+        {
+            return BaseRepository.GetAllUsers<User>();
+        }
+
+
+        //Seed
+        public void Seed()
+        {
+
+        }
     }
 }

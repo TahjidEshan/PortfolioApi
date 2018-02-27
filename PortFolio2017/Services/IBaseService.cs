@@ -121,5 +121,17 @@ namespace PortFolio2017.Services
         void Update(Work Work);
         Work GetWorkById(long Id);
         IQueryable<Work> GetAllWorks();
+
+        //User
+        void Save(User User);
+        void Delete(User User);
+        void Update(User User);
+        User GetUserById(long Id);
+        IQueryable<User> GetAllUsers();
+
+
+
+        //Seed Method
+        void Seed();
     }
 }

@@ -39,5 +39,6 @@ namespace PortFolio2017.DAL
         public DbSet<PublicationAuthors> PublicationAuthors { get; set; }
         public DbSet<Work> WorkHistory { get; set; }
         public DbSet<Education> EducationHistory { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
