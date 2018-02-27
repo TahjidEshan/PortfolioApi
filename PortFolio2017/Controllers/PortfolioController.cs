@@ -21,7 +21,6 @@ namespace PortFolio2017.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            BaseService.Seed();
             return BaseService.GetAllEmails().Select(x=>x.EmailAddress);
         }
 

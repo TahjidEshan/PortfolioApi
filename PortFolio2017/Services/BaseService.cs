@@ -436,7 +436,8 @@ namespace PortFolio2017.Services
             Save(Eshan);
 
             IList<SocialService> SideBarSocialIcons = new List<SocialService>();
-            SideBarSocialIcons.Add(new SocialService {
+            SideBarSocialIcons.Add(new SocialService
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -493,7 +494,8 @@ namespace PortFolio2017.Services
             foreach (SocialService item in SideBarSocialIcons) Save(item);
 
             IList<Header> Headers = new List<Header>();
-            Headers.Add(new Header {
+            Headers.Add(new Header
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -545,7 +547,8 @@ namespace PortFolio2017.Services
             Save(DownArrow);
 
             IList<GeneralSkill> GeneralSkills = new List<GeneralSkill>();
-            GeneralSkills.Add(new GeneralSkill {
+            GeneralSkills.Add(new GeneralSkill
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -592,7 +595,8 @@ namespace PortFolio2017.Services
             foreach (GeneralSkill Item in GeneralSkills) Save(Item);
             IList<Event> LifeEvents = new List<Event>();
             IList<Work> Works = new List<Work>();
-            Works.Add(new Work {
+            Works.Add(new Work
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -639,10 +643,11 @@ namespace PortFolio2017.Services
                 ToDate = new DateTime(2016, 12, 16),
                 FromDate = new DateTime(2015, 1, 16)
             });
-            foreach(Work Item in Works)
+            foreach (Work Item in Works)
             {
                 Save(Item);
-                LifeEvents.Add(new Event {
+                LifeEvents.Add(new Event
+                {
                     CreatedByUserId = Eshan.UserId,
                     UpdatedByUserId = Eshan.UserId,
                     CreatedOn = DateTime.UtcNow,
@@ -651,7 +656,8 @@ namespace PortFolio2017.Services
                 });
             }
             IList<Education> EducationHistory = new List<Education>();
-            EducationHistory.Add(new Education {
+            EducationHistory.Add(new Education
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -660,7 +666,7 @@ namespace PortFolio2017.Services
                 Url = "http://www.bracu.ac.bd/",
                 FromDate = new DateTime(2013, 1, 1),
                 ToDate = new DateTime(2016, 12, 31),
-                UrlText = "Brac University-" + new DateTime(2013, 1, 1) + "-"+ new DateTime(2016, 12, 31),
+                UrlText = "Brac University-" + new DateTime(2013, 1, 1) + "-" + new DateTime(2016, 12, 31),
                 Description = "Graduated With High Distinction"
             });
             EducationHistory.Add(new Education
@@ -684,9 +690,9 @@ namespace PortFolio2017.Services
                 Title = "Secondary School Certificate(SSC)",
                 Url = "http://www.scpsc.edu.bd/",
                 ToDate = new DateTime(2010, 7, 31),
-                UrlText = "Brac University-" +  " -" + 2010,
+                UrlText = "Brac University-" + " -" + 2010,
             });
-            foreach(Education item in EducationHistory)
+            foreach (Education item in EducationHistory)
             {
                 Save(item);
                 LifeEvents.Add(new Event
@@ -719,7 +725,8 @@ namespace PortFolio2017.Services
                 EducationId = Publication.Id
             });
             IList<Author> Authors = new List<Author>();
-            Authors.Add(new Author {
+            Authors.Add(new Author
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -743,10 +750,11 @@ namespace PortFolio2017.Services
                 UpdatedOn = DateTime.UtcNow,
                 Name = "Md. Haider Ali"
             });
-            foreach(Author Item in Authors)
+            foreach (Author Item in Authors)
             {
                 Save(Item);
-                Save(new PublicationAuthors {
+                Save(new PublicationAuthors
+                {
                     PublicationId = Publication.Id,
                     AuthorId = Item.Id,
                     CreatedByUserId = Eshan.UserId,
@@ -758,7 +766,8 @@ namespace PortFolio2017.Services
             foreach (Event Item in LifeEvents) Save(Item);
 
             IList<Expertise> Expertise = new List<Expertise>();
-            Expertise.Add(new Expertise {
+            Expertise.Add(new Expertise
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -813,7 +822,8 @@ namespace PortFolio2017.Services
             });
             foreach (Expertise Item in Expertise) Save(Item);
             IList<SpecialSkills> SpecialSkillsList = new List<SpecialSkills>();
-            SpecialSkillsList.Add(new SpecialSkills {
+            SpecialSkillsList.Add(new SpecialSkills
+            {
                 DisplayType = Enums.DisplayType.Chart,
                 Title = "C#",
                 Percentage = 90
@@ -876,7 +886,7 @@ namespace PortFolio2017.Services
             {
                 DisplayType = Enums.DisplayType.ProgressBar,
                 Title = "Laravel",
-                Percentage =70
+                Percentage = 70
             });
             SpecialSkillsList.Add(new SpecialSkills
             {
@@ -986,7 +996,7 @@ namespace PortFolio2017.Services
                 Title = "Scrum",
                 Percentage = 70
             });
-            foreach(SpecialSkills Item in SpecialSkillsList)
+            foreach (SpecialSkills Item in SpecialSkillsList)
             {
                 Item.CreatedByUserId = Eshan.UserId;
                 Item.UpdatedByUserId = Eshan.UserId;
@@ -994,7 +1004,8 @@ namespace PortFolio2017.Services
                 Item.UpdatedOn = DateTime.UtcNow;
                 Save(Item);
             }
-            Save(new Address {
+            Save(new Address
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -1004,14 +1015,16 @@ namespace PortFolio2017.Services
                 HouseNumber = "111/2/3",
                 RoadNumber = "Niketon Bazar, Tejgao Industrial Area",
             });
-            Save(new Phone {
+            Save(new Phone
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
                 UpdatedOn = DateTime.UtcNow,
                 PhoneNumber = "01985169856"
             });
-            Save(new Phone { 
+            Save(new Phone
+            {
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
@@ -1076,6 +1089,37 @@ namespace PortFolio2017.Services
                 Name = "Github"
             });
             foreach (SocialService item in FooterSocialIcons) Save(item);
+            Save(new Email {
+                EmailAddress = "atahjid@gmail.com",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+            });
+            Save(new Email
+            {
+                EmailAddress = "atahjid@live.com",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+            });
+            Save(new Email
+            {
+                EmailAddress = "atahjid@yahoo.com",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+            });
+            Save(new Email
+            {
+                EmailAddress = "ta.mostafa@asthait.com",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+            });
         }
     }
 }

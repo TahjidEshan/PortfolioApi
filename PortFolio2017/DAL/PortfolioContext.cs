@@ -41,6 +41,7 @@ namespace PortFolio2017.DAL
         public DbSet<Education> EducationHistory { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Expertise> Expertise { get; set; }
+        public DbSet<SpecialSkills> SpecialSkills { get; set; }
 
     }
 }
