@@ -10,6 +10,8 @@ namespace PortFolio2017.Models
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; }
         public string Url { get; set; }
+        public string UrlText { get; set; }
+        public string Description { get; set; }
         public LifeEvent LifeEvent { get; set; } = LifeEvent.Publication;
     }
 }

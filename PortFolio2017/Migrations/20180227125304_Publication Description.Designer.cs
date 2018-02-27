@@ -12,9 +12,10 @@ using System;
 namespace PortFolio2017.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    partial class PortfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20180227125304_Publication Description")]
+    partial class PublicationDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,15 +79,11 @@ namespace PortFolio2017.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<long?>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
 
                     b.HasIndex("UpdatedByUserId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Authors");
                 });
@@ -189,33 +186,6 @@ namespace PortFolio2017.Migrations
                     b.HasIndex("WorkId");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("PortFolio2017.Models.Expertise", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long>("CreatedByUserId");
-
-                    b.Property<DateTime?>("CreatedOn");
-
-                    b.Property<string>("Details");
-
-                    b.Property<string>("Title")
-                        .IsRequired();
-
-                    b.Property<long>("UpdatedByUserId");
-
-                    b.Property<DateTime?>("UpdatedOn");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("UpdatedByUserId");
-
-                    b.ToTable("Expertise");
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.GeneralSkill", b =>
@@ -369,8 +339,6 @@ namespace PortFolio2017.Migrations
                     b.Property<DateTime?>("UpdatedOn");
 
                     b.Property<string>("Url");
-
-                    b.Property<string>("UrlText");
 
                     b.HasKey("Id");
 
@@ -558,11 +526,6 @@ namespace PortFolio2017.Migrations
                         .WithMany()
                         .HasForeignKey("UpdatedByUserId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("PortFolio2017.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.Education", b =>
@@ -616,19 +579,6 @@ namespace PortFolio2017.Migrations
                     b.HasOne("PortFolio2017.Models.Work", "Work")
                         .WithMany()
                         .HasForeignKey("WorkId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("PortFolio2017.Models.Expertise", b =>
-                {
-                    b.HasOne("PortFolio2017.Models.User", "CreatedByUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("PortFolio2017.Models.User", "UpdatedByUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedByUserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

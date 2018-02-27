@@ -383,6 +383,29 @@ namespace PortFolio2017.Services
             return BaseRepository.GetQuery<Work>();
         }
 
+        //Expertise
+        public void Save(Expertise Expertise)
+        {
+            BaseRepository.Insert<Expertise>(Expertise);
+        }
+        public void Delete(Expertise Expertise)
+        {
+            BaseRepository.Delete<Expertise>(Expertise);
+        }
+        public void Update(Expertise Expertise)
+        {
+            BaseRepository.Update<Expertise>(Expertise);
+        }
+        public Expertise GetExpertiseById(long Id)
+        {
+            return BaseRepository.GetByID<Expertise>(Id);
+        }
+        public IQueryable<Expertise> GetAllExpertise()
+        {
+            return BaseRepository.GetQuery<Expertise>();
+        }
+
+
         //User
         public void Save(User User)
         {
@@ -409,7 +432,650 @@ namespace PortFolio2017.Services
         //Seed
         public void Seed()
         {
+            User Eshan = new User { UserName = "Eshan" };
+            Save(Eshan);
 
+            IList<SocialService> SideBarSocialIcons = new List<SocialService>();
+            SideBarSocialIcons.Add(new SocialService {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Sidebar,
+                Icon = "icon-twitter2",
+                Url = "https://twitter.com/Ashfaque_Eshan",
+                Name = "Twitter"
+            });
+            SideBarSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Sidebar,
+                Icon = "icon-facebook2",
+                Url = "https://www.facebook.com/Ashfaque.Eshan",
+                Name = "Facebook"
+            });
+            SideBarSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Sidebar,
+                Icon = "icon-linkedin2",
+                Url = "https://www.linkedin.com/in/tahjid",
+                Name = "LinkedIn"
+            });
+            SideBarSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Sidebar,
+                Icon = "icon-google-plus",
+                Url = "https://plus.google.com/u/0/+TahjidAshfaqueEshan",
+                Name = "Google+"
+            });
+            SideBarSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Sidebar,
+                Icon = "icon-github2",
+                Url = "https://github.com/TahjidEshan",
+                Name = "Github"
+            });
+            foreach (SocialService item in SideBarSocialIcons) Save(item);
+
+            IList<Header> Headers = new List<Header>();
+            Headers.Add(new Header {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Tahjid Ashfaque"
+            });
+            Headers.Add(new Header
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Designer"
+            });
+            Headers.Add(new Header
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Developer"
+            });
+            Headers.Add(new Header
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Consultant"
+            });
+            Headers.Add(new Header
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Artist"
+            });
+            foreach (Header item in Headers) Save(item);
+            Image DownArrow = new Image
+            {
+                Location = "images/others/down-arrow-black.png",
+                Title = "Down Arrow",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow
+            };
+            Save(DownArrow);
+
+            IList<GeneralSkill> GeneralSkills = new List<GeneralSkill>();
+            GeneralSkills.Add(new GeneralSkill {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Full Stack Web Development",
+                Percentage = 85,
+            });
+            GeneralSkills.Add(new GeneralSkill
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Responsive UX/UI Design",
+                Percentage = 85,
+            });
+            GeneralSkills.Add(new GeneralSkill
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Database Management",
+                Percentage = 80,
+            });
+            GeneralSkills.Add(new GeneralSkill
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Image Processing",
+                Percentage = 70,
+            });
+            GeneralSkills.Add(new GeneralSkill
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Text = "Machine Learning",
+                Percentage = 70,
+            });
+            foreach (GeneralSkill Item in GeneralSkills) Save(Item);
+            IList<Event> LifeEvents = new List<Event>();
+            IList<Work> Works = new List<Work>();
+            Works.Add(new Work {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Jr. Software Engineer",
+                Url = "http://www.asthait.com/",
+                UrlText = "Astha IT Research & Consultancy Ltd.",
+                CurrentlyEmployed = true,
+                FromDate = new DateTime(2017, 9, 6)
+            });
+            Works.Add(new Work
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Software Engineer",
+                Url = "http://www.crowdware.co/",
+                UrlText = "Crowdware",
+                ToDate = new DateTime(2017, 8, 31),
+                FromDate = new DateTime(2017, 6, 6)
+            });
+            Works.Add(new Work
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Software Engineer",
+                Url = "https://www.iquantile.com/",
+                UrlText = "iQuantile",
+                ToDate = new DateTime(2017, 6, 5),
+                FromDate = new DateTime(2017, 5, 2)
+            });
+            Works.Add(new Work
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Student Tutor",
+                Url = "http://www.bracu.ac.bd/",
+                UrlText = "BRAC University",
+                ToDate = new DateTime(2016, 12, 16),
+                FromDate = new DateTime(2015, 1, 16)
+            });
+            foreach(Work Item in Works)
+            {
+                Save(Item);
+                LifeEvents.Add(new Event {
+                    CreatedByUserId = Eshan.UserId,
+                    UpdatedByUserId = Eshan.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    UpdatedOn = DateTime.UtcNow,
+                    WorkId = Item.Id
+                });
+            }
+            IList<Education> EducationHistory = new List<Education>();
+            EducationHistory.Add(new Education {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "BSc in Computer Science and Engineering(CSE)",
+                Url = "http://www.bracu.ac.bd/",
+                FromDate = new DateTime(2013, 1, 1),
+                ToDate = new DateTime(2016, 12, 31),
+                UrlText = "Brac University-" + new DateTime(2013, 1, 1) + "-"+ new DateTime(2016, 12, 31),
+                Description = "Graduated With High Distinction"
+            });
+            EducationHistory.Add(new Education
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Higher Secondary Certificate(HSC)",
+                Url = "http://www.notredamecollege-dhaka.com/",
+                FromDate = new DateTime(2010, 8, 1),
+                ToDate = new DateTime(2012, 8, 31),
+                UrlText = "Notre Dame College-" + 2010 + "-" + 2012,
+            });
+            EducationHistory.Add(new Education
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Secondary School Certificate(SSC)",
+                Url = "http://www.scpsc.edu.bd/",
+                ToDate = new DateTime(2010, 7, 31),
+                UrlText = "Brac University-" +  " -" + 2010,
+            });
+            foreach(Education item in EducationHistory)
+            {
+                Save(item);
+                LifeEvents.Add(new Event
+                {
+                    CreatedByUserId = Eshan.UserId,
+                    UpdatedByUserId = Eshan.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    UpdatedOn = DateTime.UtcNow,
+                    EducationId = item.Id
+                });
+            }
+            Publication Publication = new Publication
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Name = "Abnormal event detection in crowded scenarios",
+                Url = "http://ieeexplore.ieee.org/document/8275217/",
+                UrlText = "View in IEEE XPlore",
+                Description = "This paper proposes an autonomous video surveillance system which analyzes footages of extremely crowded scenes and detects abnormal events in the context of that particular scene. The model analyzes the local spatial-temporal motion pattern and detects abnormal motion variations and sudden changes and it can be divided into two major parts, selecting a set of Points of Interest (POI) from given frames and tracking them across multiple frames and dividing the input video frame in a number of cubes and track the motion patterns in each of the cubes for spatial-temporal statistical deviations. To evaluate the performance of proposed model we utilize several datasets and compare the acquired results of the proposed model with various state-of-the art models. Experimental results demonstrate that the proposed model outperforms the other models by exhibiting an average of 96.12% accuracy using Convolutional Neural Network.",
+            };
+            Save(Publication);
+            LifeEvents.Add(new Event
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                EducationId = Publication.Id
+            });
+            IList<Author> Authors = new List<Author>();
+            Authors.Add(new Author {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                UserId = Eshan.UserId,
+                Name = "Tahjid Ashfaque Mostafa"
+            });
+            Authors.Add(new Author
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Name = "Jia Uddin"
+            });
+            Authors.Add(new Author
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Name = "Md. Haider Ali"
+            });
+            foreach(Author Item in Authors)
+            {
+                Save(Item);
+                Save(new PublicationAuthors {
+                    PublicationId = Publication.Id,
+                    AuthorId = Item.Id,
+                    CreatedByUserId = Eshan.UserId,
+                    UpdatedByUserId = Eshan.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    UpdatedOn = DateTime.UtcNow
+                });
+            }
+            foreach (Event Item in LifeEvents) Save(Item);
+
+            IList<Expertise> Expertise = new List<Expertise>();
+            Expertise.Add(new Expertise {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Full Stack Web Development",
+                Details = "Full Stack Web Development"
+            });
+            Expertise.Add(new Expertise
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Responsive UX/UI Development",
+                Details = "Responsive UX/UI Development"
+            });
+            Expertise.Add(new Expertise
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Computer Vision/Image Processing",
+                Details = "Computer Vision/Image Processing"
+            });
+            Expertise.Add(new Expertise
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Machine Learning",
+                Details = "Machine Learning"
+            });
+            Expertise.Add(new Expertise
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Software Development",
+                Details = "Software Development"
+            });
+            Expertise.Add(new Expertise
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Title = "Database Management",
+                Details = "Database Management"
+            });
+            foreach (Expertise Item in Expertise) Save(Item);
+            IList<SpecialSkills> SpecialSkillsList = new List<SpecialSkills>();
+            SpecialSkillsList.Add(new SpecialSkills {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "C#",
+                Percentage = 90
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "JAVA SE",
+                Percentage = 90
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "PYTHON",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "PHP",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "JavaScript",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "HTML5",
+                Percentage = 90
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "CSS3",
+                Percentage = 80
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "RUBY",
+                Percentage = 65
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.Chart,
+                Title = "C/C++",
+                Percentage = 75
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "CodeIgniter",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Laravel",
+                Percentage =70
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "jQuery",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "AngularJs",
+                Percentage = 80
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Java Swing",
+                Percentage = 80
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "LINQ",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Arduino Programming",
+                Percentage = 60
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Vue JS",
+                Percentage = 70
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "RSpec",
+                Percentage = 65
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Jasmine",
+                Percentage = 65
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "BootStrap",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "OpenCV",
+                Percentage = 80
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Theano",
+                Percentage = 70
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "TensorFlow",
+                Percentage = 65
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Keras",
+                Percentage = 70
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "ScikitLearn",
+                Percentage = 70
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Linux OS",
+                Percentage = 90
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "ASP.NET MVC",
+                Percentage = 90
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Entity Framework",
+                Percentage = 85
+            });
+            SpecialSkillsList.Add(new SpecialSkills
+            {
+                DisplayType = Enums.DisplayType.ProgressBar,
+                Title = "Scrum",
+                Percentage = 70
+            });
+            foreach(SpecialSkills Item in SpecialSkillsList)
+            {
+                Item.CreatedByUserId = Eshan.UserId;
+                Item.UpdatedByUserId = Eshan.UserId;
+                Item.CreatedOn = DateTime.UtcNow;
+                Item.UpdatedOn = DateTime.UtcNow;
+                Save(Item);
+            }
+            Save(new Address {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                Country = "Bangladesh",
+                City = "Dhaka",
+                HouseNumber = "111/2/3",
+                RoadNumber = "Niketon Bazar, Tejgao Industrial Area",
+            });
+            Save(new Phone {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                PhoneNumber = "01985169856"
+            });
+            Save(new Phone { 
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                PhoneNumber = "01684190636"
+            });
+
+            IList<SocialService> FooterSocialIcons = new List<SocialService>();
+            FooterSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Footer,
+                Icon = "fa fa-twitter",
+                Url = "https://twitter.com/Ashfaque_Eshan",
+                Name = "Twitter"
+            });
+            FooterSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Footer,
+                Icon = "fa fa-facebook",
+                Url = "https://www.facebook.com/Ashfaque.Eshan",
+                Name = "Facebook"
+            });
+            FooterSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Footer,
+                Icon = "fa fa-linkedin",
+                Url = "https://www.linkedin.com/in/tahjid",
+                Name = "LinkedIn"
+            });
+            FooterSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Footer,
+                Icon = "fa fa-google-plus",
+                Url = "https://plus.google.com/u/0/+TahjidAshfaqueEshan",
+                Name = "Google+"
+            });
+            FooterSocialIcons.Add(new SocialService
+            {
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+                SocialLinkType = Enums.SocialLinkType.Footer,
+                Icon = "fa fa-github",
+                Url = "https://github.com/TahjidEshan",
+                Name = "Github"
+            });
+            foreach (SocialService item in FooterSocialIcons) Save(item);
         }
     }
 }

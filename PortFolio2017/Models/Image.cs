@@ -6,5 +6,6 @@ namespace PortFolio2017.Models
     {
         [Required(ErrorMessage = "Provide valid Location")]
         public string Location { get; set; }
+        public string Title { get; set; }
     }
 }

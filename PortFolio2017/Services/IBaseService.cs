@@ -122,6 +122,13 @@ namespace PortFolio2017.Services
         Work GetWorkById(long Id);
         IQueryable<Work> GetAllWorks();
 
+        //Expertise
+        void Save(Expertise Expertise);
+        void Delete(Expertise Expertise);
+        void Update(Expertise Expertise);
+        Expertise GetExpertiseById(long Id);
+        IQueryable<Expertise> GetAllExpertise();
+
         //User
         void Save(User User);
         void Delete(User User);
