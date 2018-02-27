@@ -9,17 +9,6 @@ namespace PortFolio2017.ViewModelBuilder
     public class BaseModelBuilder
     {
         #region GetList
-        internal static AddressListViewModel GetAddress(IBaseService BaseService)
-        {
-            return new AddressListViewModel{
-                Addresses = BaseService.GetAddresses().Select(x => new AddressViewModel {
-                            City = x.City,
-                            Country = x.Country,
-                            HouseNumber = x.HouseNumber,
-                            RoadNumber = x.RoadNumber
-                        }).ToList()
-            };
-        }
         internal static SocialIconsViewModel GetSocialLinksForSidebar(IBaseService BaseService)
         {
             return new SocialIconsViewModel{
