@@ -12,8 +12,8 @@ using System;
 namespace PortFolio2017.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20180227125304_Publication Description")]
-    partial class PublicationDescription
+    [Migration("20180301194948_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Address", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("City")
@@ -35,7 +35,7 @@ namespace PortFolio2017.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -47,7 +47,7 @@ namespace PortFolio2017.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -62,10 +62,10 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Author", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -73,11 +73,13 @@ namespace PortFolio2017.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
                     b.Property<string>("Url");
+
+                    b.Property<Guid?>("UserId");
 
                     b.HasKey("Id");
 
@@ -85,15 +87,17 @@ namespace PortFolio2017.Migrations
 
                     b.HasIndex("UpdatedByUserId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.Education", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -110,7 +114,7 @@ namespace PortFolio2017.Migrations
 
                     b.Property<DateTime>("ToDate");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -124,22 +128,22 @@ namespace PortFolio2017.Migrations
 
                     b.HasIndex("UpdatedByUserId");
 
-                    b.ToTable("EducationHistory");
+                    b.ToTable("Educations");
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.Email", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired();
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -154,24 +158,22 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Event", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
-                    b.Property<long?>("EducationId");
+                    b.Property<Guid?>("EducationId");
 
-                    b.Property<int>("LifeEvent");
+                    b.Property<Guid?>("PublicationId");
 
-                    b.Property<long?>("PublicationId");
-
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
-                    b.Property<long?>("WorkId");
+                    b.Property<Guid?>("WorkId");
 
                     b.HasKey("Id");
 
@@ -188,12 +190,39 @@ namespace PortFolio2017.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("PortFolio2017.Models.GeneralSkill", b =>
+            modelBuilder.Entity("PortFolio2017.Models.Expertise", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
+
+                    b.Property<DateTime?>("CreatedOn");
+
+                    b.Property<string>("Details");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<Guid?>("UpdatedByUserId");
+
+                    b.Property<DateTime?>("UpdatedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("UpdatedByUserId");
+
+                    b.ToTable("Expertises");
+                });
+
+            modelBuilder.Entity("PortFolio2017.Models.GeneralSkill", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -202,7 +231,7 @@ namespace PortFolio2017.Migrations
                     b.Property<string>("Text")
                         .IsRequired();
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -217,17 +246,17 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Header", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
                     b.Property<string>("Text")
                         .IsRequired();
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -242,10 +271,10 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Image", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -254,7 +283,7 @@ namespace PortFolio2017.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -269,17 +298,17 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Motto", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
                     b.Property<string>("Text")
                         .IsRequired();
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -294,17 +323,17 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Phone", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired();
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -319,10 +348,10 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Publication", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -334,11 +363,13 @@ namespace PortFolio2017.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
                     b.Property<string>("Url");
+
+                    b.Property<string>("UrlText");
 
                     b.HasKey("Id");
 
@@ -349,20 +380,20 @@ namespace PortFolio2017.Migrations
                     b.ToTable("Publications");
                 });
 
-            modelBuilder.Entity("PortFolio2017.Models.PublicationAuthors", b =>
+            modelBuilder.Entity("PortFolio2017.Models.PublicationAuthor", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("AuthorId");
+                    b.Property<Guid>("AuthorId");
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
-                    b.Property<long>("PublicationId");
+                    b.Property<Guid>("PublicationId");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -381,28 +412,28 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.SentMail", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Comments")
                         .IsRequired();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
-                    b.Property<long>("EmailAddressId");
+                    b.Property<Guid>("EmailAddressId");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<long>("PhoneId");
+                    b.Property<Guid>("PhoneId");
 
                     b.Property<string>("Subject");
 
-                    b.Property<long>("ToEmailAddressId");
+                    b.Property<Guid>("ToEmailAddressId");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -423,10 +454,10 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.SocialService", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -436,7 +467,7 @@ namespace PortFolio2017.Migrations
 
                     b.Property<int>("SocialLinkType");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -448,12 +479,41 @@ namespace PortFolio2017.Migrations
 
                     b.HasIndex("UpdatedByUserId");
 
-                    b.ToTable("SocialService");
+                    b.ToTable("SocialServices");
+                });
+
+            modelBuilder.Entity("PortFolio2017.Models.SpecialSkills", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("CreatedByUserId");
+
+                    b.Property<DateTime?>("CreatedOn");
+
+                    b.Property<int>("DisplayType");
+
+                    b.Property<int>("Percentage");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<Guid?>("UpdatedByUserId");
+
+                    b.Property<DateTime?>("UpdatedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("UpdatedByUserId");
+
+                    b.ToTable("SpecialSkills");
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.User", b =>
                 {
-                    b.Property<long>("UserId")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("UserName");
@@ -465,10 +525,10 @@ namespace PortFolio2017.Migrations
 
             modelBuilder.Entity("PortFolio2017.Models.Work", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CreatedByUserId");
+                    b.Property<Guid?>("CreatedByUserId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -485,7 +545,7 @@ namespace PortFolio2017.Migrations
 
                     b.Property<DateTime>("ToDate");
 
-                    b.Property<long>("UpdatedByUserId");
+                    b.Property<Guid?>("UpdatedByUserId");
 
                     b.Property<DateTime?>("UpdatedOn");
 
@@ -499,7 +559,7 @@ namespace PortFolio2017.Migrations
 
                     b.HasIndex("UpdatedByUserId");
 
-                    b.ToTable("WorkHistory");
+                    b.ToTable("Works");
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.Address", b =>
@@ -525,6 +585,11 @@ namespace PortFolio2017.Migrations
                     b.HasOne("PortFolio2017.Models.User", "UpdatedByUser")
                         .WithMany()
                         .HasForeignKey("UpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("PortFolio2017.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -582,6 +647,19 @@ namespace PortFolio2017.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("PortFolio2017.Models.Expertise", b =>
+                {
+                    b.HasOne("PortFolio2017.Models.User", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("PortFolio2017.Models.User", "UpdatedByUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("PortFolio2017.Models.GeneralSkill", b =>
                 {
                     b.HasOne("PortFolio2017.Models.User", "CreatedByUser")
@@ -660,7 +738,7 @@ namespace PortFolio2017.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("PortFolio2017.Models.PublicationAuthors", b =>
+            modelBuilder.Entity("PortFolio2017.Models.PublicationAuthor", b =>
                 {
                     b.HasOne("PortFolio2017.Models.Author", "Author")
                         .WithMany()
@@ -672,7 +750,7 @@ namespace PortFolio2017.Migrations
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("PortFolio2017.Models.Author", "Publication")
+                    b.HasOne("PortFolio2017.Models.Publication", "Publication")
                         .WithMany()
                         .HasForeignKey("PublicationId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -712,6 +790,19 @@ namespace PortFolio2017.Migrations
                 });
 
             modelBuilder.Entity("PortFolio2017.Models.SocialService", b =>
+                {
+                    b.HasOne("PortFolio2017.Models.User", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("PortFolio2017.Models.User", "UpdatedByUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("PortFolio2017.Models.SpecialSkills", b =>
                 {
                     b.HasOne("PortFolio2017.Models.User", "CreatedByUser")
                         .WithMany()

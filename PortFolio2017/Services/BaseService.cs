@@ -30,7 +30,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Address>(Address);
         }
-        public Address GetAddressById(long Id)
+        public Address GetAddressById(Guid Id)
         {
             return BaseRepository.GetByID<Address>(Id);
         }
@@ -52,7 +52,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Author>(Author);
         }
-        public Author GetAuthorById(long Id)
+        public Author GetAuthorById(Guid Id)
         {
             return BaseRepository.GetByID<Author>(Id);
         }
@@ -60,10 +60,10 @@ namespace PortFolio2017.Services
         {
             return BaseRepository.GetQuery<Author>();
         }
-        public IQueryable<Author> GetAuthorsOfAPublication(long PublicationId)
+        public IQueryable<Author> GetAuthorsOfAPublication(Guid PublicationId)
         {
-            IQueryable<long> Authors = BaseRepository.
-                GetQuery<PublicationAuthors>().Where(x => x.PublicationId == PublicationId).Select(x => x.AuthorId);
+            IQueryable<Guid> Authors = BaseRepository.
+                GetQuery<PublicationAuthor>().Where(x => x.PublicationId == PublicationId).Select(x => x.AuthorId);
             return BaseRepository.GetQuery<Author>().Where(x => Authors.Contains(x.Id));
         }
 
@@ -80,7 +80,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Education>(Education);
         }
-        public Education GetEducationDetailsById(long Id)
+        public Education GetEducationDetailsById(Guid Id)
         {
             return BaseRepository.GetByID<Education>(Id);
         }
@@ -102,7 +102,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Email>(Email);
         }
-        public Email GetEmailById(long Id)
+        public Email GetEmailById(Guid Id)
         {
             return BaseRepository.GetByID<Email>(Id);
         }
@@ -124,7 +124,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Event>(Event);
         }
-        public Event GetEventById(long Id)
+        public Event GetEventById(Guid Id)
         {
             return BaseRepository.GetByID<Event>(Id);
         }
@@ -146,7 +146,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<GeneralSkill>(GeneralSkill);
         }
-        public GeneralSkill GetGeneralSkillById(long Id)
+        public GeneralSkill GetGeneralSkillById(Guid Id)
         {
             return BaseRepository.GetByID<GeneralSkill>(Id);
         }
@@ -169,7 +169,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Header>(Header);
         }
-        public Header GetHeaderById(long Id)
+        public Header GetHeaderById(Guid Id)
         {
             return BaseRepository.GetByID<Header>(Id);
         }
@@ -191,7 +191,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Image>(Image);
         }
-        public Image GetImageById(long Id)
+        public Image GetImageById(Guid Id)
         {
             return BaseRepository.GetByID<Image>(Id);
         }
@@ -214,7 +214,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Motto>(Motto);
         }
-        public Motto GetMottoById(long Id)
+        public Motto GetMottoById(Guid Id)
         {
             return BaseRepository.GetByID<Motto>(Id);
         }
@@ -236,7 +236,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Phone>(Phone);
         }
-        public Phone GetPhoneById(long Id)
+        public Phone GetPhoneById(Guid Id)
         {
             return BaseRepository.GetByID<Phone>(Id);
         }
@@ -258,7 +258,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Publication>(Publication);
         }
-        public Publication GetPublicationById(long Id)
+        public Publication GetPublicationById(Guid Id)
         {
             return BaseRepository.GetByID<Publication>(Id);
         }
@@ -266,33 +266,33 @@ namespace PortFolio2017.Services
         {
             return BaseRepository.GetQuery<Publication>();
         }
-        public IQueryable<Publication> GetAllPublicationsOfAnAuthor(long AuthorId)
+        public IQueryable<Publication> GetAllPublicationsOfAnAuthor(Guid AuthorId)
         {
-            IQueryable<long> PublicationIds = BaseRepository.GetQuery<PublicationAuthors>().Where(x => x.AuthorId == AuthorId).
+            IQueryable<Guid> PublicationIds = BaseRepository.GetQuery<PublicationAuthor>().Where(x => x.AuthorId == AuthorId).
                 Select(x => x.PublicationId);
             return BaseRepository.GetQuery<Publication>().Where(x => PublicationIds.Contains(x.Id));
         }
 
-        //PublicationAuthors
-        public void Save(PublicationAuthors PublicationAuthors)
+        //PublicationAuthor
+        public void Save(PublicationAuthor PublicationAuthor)
         {
-            BaseRepository.Insert<PublicationAuthors>(PublicationAuthors);
+            BaseRepository.Insert<PublicationAuthor>(PublicationAuthor);
         }
-        public void Delete(PublicationAuthors PublicationAuthors)
+        public void Delete(PublicationAuthor PublicationAuthor)
         {
-            BaseRepository.Delete<PublicationAuthors>(PublicationAuthors);
+            BaseRepository.Delete<PublicationAuthor>(PublicationAuthor);
         }
-        public void Update(PublicationAuthors PublicationAuthors)
+        public void Update(PublicationAuthor PublicationAuthor)
         {
-            BaseRepository.Update<PublicationAuthors>(PublicationAuthors);
+            BaseRepository.Update<PublicationAuthor>(PublicationAuthor);
         }
-        public PublicationAuthors GetPublicationAuthorsById(long Id)
+        public PublicationAuthor GetPublicationAuthorById(Guid Id)
         {
-            return BaseRepository.GetByID<PublicationAuthors>(Id);
+            return BaseRepository.GetByID<PublicationAuthor>(Id);
         }
-        public IQueryable<PublicationAuthors> GetAllPublicationAuthors()
+        public IQueryable<PublicationAuthor> GetAllPublicationAuthor()
         {
-            return BaseRepository.GetQuery<PublicationAuthors>();
+            return BaseRepository.GetQuery<PublicationAuthor>();
         }
 
         //SentMail
@@ -308,7 +308,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<SentMail>(SentMail);
         }
-        public SentMail GetSentMailById(long Id)
+        public SentMail GetSentMailById(Guid Id)
         {
             return BaseRepository.GetByID<SentMail>(Id);
         }
@@ -330,7 +330,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<SocialService>(SocialService);
         }
-        public SocialService GetSocialServiceById(long Id)
+        public SocialService GetSocialServiceById(Guid Id)
         {
             return BaseRepository.GetByID<SocialService>(Id);
         }
@@ -352,7 +352,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<SpecialSkills>(SpecialSkills);
         }
-        public SpecialSkills GetSpecialSkillsById(long Id)
+        public SpecialSkills GetSpecialSkillsById(Guid Id)
         {
             return BaseRepository.GetByID<SpecialSkills>(Id);
         }
@@ -374,7 +374,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Work>(Work);
         }
-        public Work GetWorkById(long Id)
+        public Work GetWorkById(Guid Id)
         {
             return BaseRepository.GetByID<Work>(Id);
         }
@@ -396,7 +396,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.Update<Expertise>(Expertise);
         }
-        public Expertise GetExpertiseById(long Id)
+        public Expertise GetExpertiseById(Guid Id)
         {
             return BaseRepository.GetByID<Expertise>(Id);
         }
@@ -419,7 +419,7 @@ namespace PortFolio2017.Services
         {
             BaseRepository.UpdateUser<User>(User);
         }
-        public User GetUserById(long Id)
+        public User GetUserById(Guid Id)
         {
             return BaseRepository.GetUserByID<User>(Id);
         }
@@ -722,7 +722,7 @@ namespace PortFolio2017.Services
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
                 UpdatedOn = DateTime.UtcNow,
-                EducationId = Publication.Id
+                PublicationId = Publication.Id
             });
             IList<Author> Authors = new List<Author>();
             Authors.Add(new Author
@@ -753,7 +753,7 @@ namespace PortFolio2017.Services
             foreach (Author Item in Authors)
             {
                 Save(Item);
-                Save(new PublicationAuthors
+                Save(new PublicationAuthor
                 {
                     PublicationId = Publication.Id,
                     AuthorId = Item.Id,

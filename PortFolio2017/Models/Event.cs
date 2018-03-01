@@ -8,15 +8,14 @@ namespace PortFolio2017.Models
 {
     public class Event : BaseClass
     {
-        public LifeEvent LifeEvent { get; set; }
         [ForeignKey("Publication")]
-        public long? PublicationId { get; set; }
+        public Guid? PublicationId { get; set; }
         public virtual Publication Publication { get; set; }
         [ForeignKey("Education")]
-        public long? EducationId { get; set; }
+        public Guid? EducationId { get; set; }
         public virtual Education Education { get; set; }
         [ForeignKey("Work")]
-        public long? WorkId { get; set; }
+        public Guid? WorkId { get; set; }
         public virtual Work Work { get; set; }
     }
 }

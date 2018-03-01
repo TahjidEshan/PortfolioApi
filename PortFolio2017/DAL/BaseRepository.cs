@@ -23,7 +23,7 @@ namespace PortFolio2017.DAL
 
         public virtual TEntity GetByID<TEntity>(object id) where TEntity : BaseClass
         {
-            return _dbContext.Set<TEntity>().FirstOrDefault(t => t.Id == (long)id);
+            return _dbContext.Set<TEntity>().FirstOrDefault(t => t.Id == (Guid)id);
         }
 
         public virtual IQueryable<TEntity> GetQuery<TEntity>() where TEntity : BaseClass
@@ -55,7 +55,7 @@ namespace PortFolio2017.DAL
 
         public virtual TEntity GetUserByID<TEntity>(object id) where TEntity : User
         {
-            return _dbContext.Set<TEntity>().FirstOrDefault(t => t.UserId == (long)id);
+            return _dbContext.Set<TEntity>().FirstOrDefault(t => t.UserId == (Guid)id);
         }
 
         public virtual IQueryable<TEntity> GetAllUsers<TEntity>() where TEntity : User

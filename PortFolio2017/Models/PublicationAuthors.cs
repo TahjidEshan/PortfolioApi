@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace PortFolio2017.Models
 {
-    public class PublicationAuthors : BaseClass
+    public class PublicationAuthor : BaseClass
     {
         [ForeignKey("Author")]
-        public long AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
         public virtual Author Author { get; set; }
         [ForeignKey("Publication")]
-        public long PublicationId { get; set; }
-        public virtual Author Publication { get; set; }
+        public Guid PublicationId { get; set; }
+        public virtual Publication Publication { get; set; }
     }
 }

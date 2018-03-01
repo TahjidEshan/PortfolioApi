@@ -33,14 +33,14 @@ namespace PortFolio2017.DAL
         public DbSet<Motto> Mottos { get; set; }
         public DbSet<Phone> Phones { get; set; }
         public DbSet<SentMail> SentMails { get; set; }
-        public DbSet<SocialService> SocialService { get; set; }
+        public DbSet<SocialService> SocialServices { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Publication> Publications { get; set; }
-        public DbSet<PublicationAuthors> PublicationAuthors { get; set; }
-        public DbSet<Work> WorkHistory { get; set; }
-        public DbSet<Education> EducationHistory { get; set; }
+        public DbSet<PublicationAuthor> PublicationAuthors { get; set; }
+        public DbSet<Work> Works { get; set; }
+        public DbSet<Education> Educations { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Expertise> Expertise { get; set; }
+        public DbSet<Expertise> Expertises { get; set; }
         public DbSet<SpecialSkills> SpecialSkills { get; set; }
 
     }

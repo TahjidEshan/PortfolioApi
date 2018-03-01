@@ -12,6 +12,13 @@ namespace PortFolio2017.Controllers
         {
             this.BaseService = BaseService;
         }
+        [Route("api/seed")]
+        [HttpGet]
+        public JsonResult Seed()
+        {
+            BaseService.Seed();
+            return Json("Done");
+        }
         [Route("api/emails")]
         [HttpGet]
         public JsonResult GetAllEmails()
