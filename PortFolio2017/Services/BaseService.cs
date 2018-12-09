@@ -159,7 +159,7 @@ namespace PortFolio2017.Services
         public void Save(Header Header)
         {
             BaseRepository.Insert<Header>(Header);
-        } 
+        }
 
         public void Delete(Header Header)
         {
@@ -181,7 +181,7 @@ namespace PortFolio2017.Services
         //Image
         public void Save(Image Image)
         {
-           BaseRepository.Insert<Image>(Image);
+            BaseRepository.Insert<Image>(Image);
         }
         public void Delete(Image Image)
         {
@@ -1089,7 +1089,8 @@ namespace PortFolio2017.Services
                 Name = "Github"
             });
             foreach (SocialService item in FooterSocialIcons) Save(item);
-            Save(new Email {
+            Save(new Email
+            {
                 EmailAddress = "atahjid@gmail.com",
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
@@ -1115,6 +1116,14 @@ namespace PortFolio2017.Services
             Save(new Email
             {
                 EmailAddress = "ta.mostafa@asthait.com",
+                CreatedByUserId = Eshan.UserId,
+                UpdatedByUserId = Eshan.UserId,
+                CreatedOn = DateTime.UtcNow,
+                UpdatedOn = DateTime.UtcNow,
+            });
+            Save(new Email
+            {
+                EmailAddress = "tahjidashfaque@zoho.com",
                 CreatedByUserId = Eshan.UserId,
                 UpdatedByUserId = Eshan.UserId,
                 CreatedOn = DateTime.UtcNow,
