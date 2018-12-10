@@ -1,12 +1,15 @@
-﻿using PortFolio2017.Enums;
-
-namespace PortFolio2017.Models
-{
-    public class SocialService : BaseClass
-    {
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using PortFolio2017.Enums;
+namespace PortFolio2017.Models {
+    [Table ("SocialService")]
+    public class SocialService : BaseClass {
+        [Column ("SocialLinkType")]
         public SocialLinkType SocialLinkType { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public string Icon { get; set; }
+
+        [Column ("URLId")]
+        [ForeignKey ("URL")]
+        public Guid URLId { get; set; }
+        public virtual URL URL { get; set; }
     }
 }

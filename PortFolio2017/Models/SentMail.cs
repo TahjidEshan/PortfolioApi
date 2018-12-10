@@ -2,23 +2,33 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PortFolio2017.Models
-{
-    public class SentMail : BaseClass
-    {
-        [Required(ErrorMessage = "Please provide your Name")]
+namespace PortFolio2017.Models {
+    [Table ("SentMail")]
+    public class SentMail : BaseClass {
+        [Column ("Name")]
+        [Required (ErrorMessage = "Please provide your Name")]
         public string Name { get; set; }
-        [ForeignKey("EmailAddress")]
+
+        [Column ("EmailAddressId")]
+        [ForeignKey ("EmailAddress")]
         public Guid EmailAddressId { get; set; }
         public virtual Email EmailAddress { get; set; }
-        [ForeignKey("Phone")]
+
+        [Column ("PhoneId")]
+        [ForeignKey ("Phone")]
         public Guid PhoneId { get; set; }
         public virtual Phone Phone { get; set; }
-        [Required(ErrorMessage = "Please provide your comments")]
-        public string Comments { get; set; }
+
+        [Column ("Body")]
+        [Required (ErrorMessage = "Please provide your comments")]
+        public string Body { get; set; }
+
+        [Column ("Subject")]
         public string Subject { get; set; }
-        [ForeignKey("ToEmailAddress")]
-        public Guid ToEmailAddressId { get; set; }
-        public virtual Email ToEmailAddress { get; set; }
+
+        [Column ("ReceiverId")]
+        [ForeignKey ("Receiver")]
+        public Guid ReceiverId { get; set; }
+        public virtual Email Receiver { get; set; }
     }
 }

@@ -125,35 +125,36 @@ namespace PortFolio2017.Services {
         public void Delete (SocialService SocialService) => BaseRepository.Delete<SocialService> (SocialService);
         public void Update (SocialService SocialService) => BaseRepository.Update<SocialService> (SocialService);
         public SocialService GetSocialServiceById (Guid Id) => BaseRepository.GetByID<SocialService> (Id);
-        public IQueryable<SocialService> GetAllSocialServices () => BaseRepository.GetQuery<SocialService> ();
+        public IQueryable<SocialService> GetAllSocialServices (bool trackChanges = true) =>
+            BaseRepository.GetQuery<SocialService> (trackChanges);
 
         //SpecialSkills
         public void Save (SpecialSkills SpecialSkills) => BaseRepository.Insert<SpecialSkills> (SpecialSkills);
         public void Delete (SpecialSkills SpecialSkills) => BaseRepository.Delete<SpecialSkills> (SpecialSkills);
         public void Update (SpecialSkills SpecialSkills) => BaseRepository.Update<SpecialSkills> (SpecialSkills);
         public SpecialSkills GetSpecialSkillsById (Guid Id) => BaseRepository.GetByID<SpecialSkills> (Id);
-        public IQueryable<SpecialSkills> GetAllSpecialSkills(bool trackChanges = true) => BaseRepository.GetQuery<SpecialSkills>(trackChanges);
+        public IQueryable<SpecialSkills> GetAllSpecialSkills (bool trackChanges = true) => BaseRepository.GetQuery<SpecialSkills> (trackChanges);
 
         //Work
-        public void Save(Work Work) => BaseRepository.Insert<Work>(Work);
-        public void Delete(Work Work) => BaseRepository.Delete<Work>(Work);
-        public void Update(Work Work) => BaseRepository.Update<Work>(Work);
-        public Work GetWorkById(Guid Id) => BaseRepository.GetByID<Work>(Id);
-        public IQueryable<Work> GetAllWorks(bool trackChanges = true) => BaseRepository.GetQuery<Work>(trackChanges);
+        public void Save (Work Work) => BaseRepository.Insert<Work> (Work);
+        public void Delete (Work Work) => BaseRepository.Delete<Work> (Work);
+        public void Update (Work Work) => BaseRepository.Update<Work> (Work);
+        public Work GetWorkById (Guid Id) => BaseRepository.GetByID<Work> (Id);
+        public IQueryable<Work> GetAllWorks (bool trackChanges = true) => BaseRepository.GetQuery<Work> (trackChanges);
 
         //Expertise
-        public void Save(Expertise Expertise) => BaseRepository.Insert<Expertise>(Expertise);
-        public void Delete(Expertise Expertise) => BaseRepository.Delete<Expertise>(Expertise);
-        public void Update(Expertise Expertise) => BaseRepository.Update<Expertise>(Expertise);
-        public Expertise GetExpertiseById(Guid Id) => BaseRepository.GetByID<Expertise>(Id);
-        public IQueryable<Expertise> GetAllExpertise(bool trackChanges = true) => BaseRepository.GetQuery<Expertise>(trackChanges);
+        public void Save (Expertise Expertise) => BaseRepository.Insert<Expertise> (Expertise);
+        public void Delete (Expertise Expertise) => BaseRepository.Delete<Expertise> (Expertise);
+        public void Update (Expertise Expertise) => BaseRepository.Update<Expertise> (Expertise);
+        public Expertise GetExpertiseById (Guid Id) => BaseRepository.GetByID<Expertise> (Id);
+        public IQueryable<Expertise> GetAllExpertise (bool trackChanges = true) => BaseRepository.GetQuery<Expertise> (trackChanges);
 
         //User
-        public void Save(User User) => BaseRepository.InsertUser<User>(User);
-        public void Delete(User User) => BaseRepository.DeleteUser<User>(User);
-        public void Update(User User) => BaseRepository.UpdateUser<User>(User);
-        public User GetUserById(Guid Id) => BaseRepository.GetUserByID<User>(Id);
-        public IQueryable<User> GetAllUsers(bool trackChanges = true) => BaseRepository.GetAllUsers<User>(trackChanges);
+        public void Save (User User) => BaseRepository.InsertUser<User> (User);
+        public void Delete (User User) => BaseRepository.DeleteUser<User> (User);
+        public void Update (User User) => BaseRepository.UpdateUser<User> (User);
+        public User GetUserById (Guid Id) => BaseRepository.GetUserByID<User> (Id);
+        public IQueryable<User> GetAllUsers (bool trackChanges = true) => BaseRepository.GetAllUsers<User> (trackChanges);
 
         //Seed
         public void Seed () {
@@ -211,6 +212,16 @@ namespace PortFolio2017.Services {
                     Url = "https://github.com/TahjidEshan",
                     Name = "Github"
             });
+            SideBarSocialIcons.Add (new SocialService {
+                CreatedByUserId = Eshan.UserId,
+                    UpdatedByUserId = Eshan.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    UpdatedOn = DateTime.UtcNow,
+                    SocialLinkType = Enums.SocialLinkType.Sidebar,
+                    Icon = "icon-instagram2",
+                    Url = "https://www.instagram.com/tahjidashfaque.eshan/",
+                    Name = "Instagram"
+            });
             foreach (SocialService item in SideBarSocialIcons) Save (item);
 
             IList<Header> Headers = new List<Header> ();
@@ -248,6 +259,13 @@ namespace PortFolio2017.Services {
                     CreatedOn = DateTime.UtcNow,
                     UpdatedOn = DateTime.UtcNow,
                     Text = "Artist"
+            });
+            Headers.Add (new Header {
+                CreatedByUserId = Eshan.UserId,
+                    UpdatedByUserId = Eshan.UserId,
+                    CreatedOn = DateTime.UtcNow,
+                    UpdatedOn = DateTime.UtcNow,
+                    Text = "Engineer"
             });
             foreach (Header item in Headers) Save (item);
             Image DownArrow = new Image {
@@ -364,12 +382,16 @@ namespace PortFolio2017.Services {
                     UpdatedByUserId = Eshan.UserId,
                     CreatedOn = DateTime.UtcNow,
                     UpdatedOn = DateTime.UtcNow,
-                    Title = "BSc in Computer Science and Engineering(CSE)",
+                    Title = "Bachelor of Science in Computer Science and Engineering(CSE)",
                     Url = "http://www.bracu.ac.bd/",
                     FromDate = new DateTime (2013, 1, 1),
                     ToDate = new DateTime (2016, 12, 31),
                     UrlText = "Brac University-" + new DateTime (2013, 1, 1) + "-" + new DateTime (2016, 12, 31),
-                    Description = "Graduated With High Distinction"
+                    Description = "Graduated with High Distinction\n" +
+                    "Recipient of Merit-Based Scholarship all throughout Undergraduate\n" +
+                    "Placed on VC's List on Three semesters\n" +
+                    "Placed on Dean's List on Five Semesters\n" +
+                    "Selected as a Student Tutor for Five Semesters (Spring 2015-Summer 2016)"
             });
             EducationHistory.Add (new Education {
                 CreatedByUserId = Eshan.UserId,

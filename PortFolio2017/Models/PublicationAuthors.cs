@@ -4,14 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PortFolio2017.Models
-{
-    public class PublicationAuthor : BaseClass
-    {
-        [ForeignKey("Author")]
+namespace PortFolio2017.Models {
+    [Table ("PublicationAuthor")]
+    public class PublicationAuthor : BaseClass {
+        [Column ("AuthorId")]
+        [ForeignKey ("Author")]
         public Guid AuthorId { get; set; }
         public virtual Author Author { get; set; }
-        [ForeignKey("Publication")]
+
+        [Column ("PublicationId")]
+        [ForeignKey ("Publication")]
         public Guid PublicationId { get; set; }
         public virtual Publication Publication { get; set; }
     }
